@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-
+import './App.css';
 import Clock from './Clock';
+import { Form, FormControl } from 'react-bootstrap';
 
 
 class App extends Component{
@@ -17,17 +18,17 @@ class App extends Component{
 
   render(){
     return(
-      <div >
-      <div > StopWatch Timer for : {this.state.newhours} hours {this.state.newminutes} minutes {this.state.newseconds} seconds</div>
+      <div className = "App-area">
+      <div className = "App-title"> StopWatch Timer for : {this.state.newhours} hours {this.state.newminutes} minutes {this.state.newseconds} seconds</div>
 
         <Clock newhours = {this.state.newhours} newminutes = {this.state.newminutes} newseconds = {this.state.newseconds}  />
 
-        <div inline ><span id = "id1">Enter Time: </span>
-          Hours <input onChange = {event => this.setState({newhours: event.target.value})} />
-        {" "}Minutes <input onChange = {event => this.setState({newminutes: event.target.value})} />
-        {" "}Seconds <input onChange = {event => this.setState({newseconds: event.target.value})} />
+        <Form inline >
+          Hours <FormControl onChange = {event => this.setState({newhours: event.target.value})} />
+        {" "}Minutes <FormControl onChange = {event => this.setState({newminutes: event.target.value})} />
+        {" "}Seconds <FormControl onChange = {event => this.setState({newseconds: event.target.value})} />
 
-        </div>
+        </Form>
       </div>
     )
   }

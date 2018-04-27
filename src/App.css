@@ -1,0 +1,18 @@
+.App-area{
+  font-size: 35px;
+  margin-top: 15%;
+  text-align: center;
+  color: white;
+}
+
+.App-title{
+  color: white;
+  margin: 20px;
+}
+.App-hours, .App-minutes, .App-seconds{
+  font-size: 25px;
+  display: inline;
+  margin: 10px;
+  color: white;
+
+}

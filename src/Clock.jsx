@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-
+import './App.css';
+import {Button} from 'react-bootstrap';
 
 class Clock extends Component{
 
@@ -84,12 +85,12 @@ class Clock extends Component{
   render(){
     return(
     <div>
-    <div>{this.state.hours} hours</div>
-    <div>{this.state.minutes} minutes</div>
-    <div>{this.state.seconds} seconds</div>
-    <button onClick = {() => this.setTimerTo()} id = "id2" > Set Timer</button>
-    {' '}<button onClick = {() => this.starter()} id = "id3"> Start </button>
-    {' '}<button onClick = {() => this.resetter()}> Reset </button>
+    <div className = "App-hours">{this.state.hours} hours</div>
+    <div className = "App-minutes">{this.state.minutes} minutes</div>
+    <div className = "App-seconds">{this.state.seconds} seconds</div>
+    <Button onClick = {() => this.setTimerTo()} id = "id2" > Set Timer</Button>
+    {' '}<Button onClick = {() => this.starter()} id = "id3"> Start </Button>
+    {' '}<Button onClick = {() => this.resetter()}> Reset </Button>
 
     </div>
 
