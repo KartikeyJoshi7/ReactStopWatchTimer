@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Clock from './Clock';
 
+import Clock from './Clock';
 
 
 class App extends Component{
@@ -17,15 +17,15 @@ class App extends Component{
 
   render(){
     return(
-      <div>
-      <div> StopWatch Timer for : {this.state.newhours} hours {this.state.newminutes} minutes {this.state.newseconds} seconds</div>
+      <div >
+      <div > StopWatch Timer for : {this.state.newhours} hours {this.state.newminutes} minutes {this.state.newseconds} seconds</div>
 
         <Clock newhours = {this.state.newhours} newminutes = {this.state.newminutes} newseconds = {this.state.newseconds}  />
 
-        <div>Enter Time:
-          Hours <input placeholder = " hours"/>
-        {" "}Minutes <input placeholder = " minutes"/>
-        {" "}Seconds <input placeholder = " seconds"/>
+        <div inline ><span id = "id1">Enter Time: </span>
+          Hours <input onChange = {event => this.setState({newhours: event.target.value})} />
+        {" "}Minutes <input onChange = {event => this.setState({newminutes: event.target.value})} />
+        {" "}Seconds <input onChange = {event => this.setState({newseconds: event.target.value})} />
 
         </div>
       </div>

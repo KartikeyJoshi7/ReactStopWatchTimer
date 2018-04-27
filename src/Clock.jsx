@@ -9,19 +9,87 @@ class Clock extends Component{
       hours: 0,
       minutes: 0,
       seconds: 0,
-
+      flag: 0
     }
+  }
+
+  secondsUpdater(new_timer){
+
+    const new_sec = this.state.seconds;
+    if(new_sec === 0){
+
+           if(this.state.hours > -1 && this.state.hours < 1 && this.state.minutes > -1 && this.state.minutes < 1){
+               const seconds = 0;
+               this.setState({flag: 1});
+               this.setState({seconds: seconds});
+               alert('Time Up!!');
+               clearInterval(new_timer);
+
+
+           }
+
+           else{
+              const seconds = 59;
+              this.setState({seconds: seconds});
+              const new_minutes = this.state.minutes;
+              if(new_minutes === 0){
+                  if(this.state.hours > -1 && this.state.hours < 1){
+                      const minutes = 0;
+                      this.setState({minutes: minutes});
+
+                  }
+                  else{
+                      const minutes = 59;
+                      this.setState({minutes: minutes});
+                      const new_hours = this.state.hours;
+                      if(new_hours === 0){
+                          const hours = 0;
+                          this.setState({hours: hours});
+                      }
+                      else{
+                      const hours = new_hours - 1;
+                      this.setState({hours: hours});
+                      }
+                  }
+              }
+              else{
+                 const minutes = new_minutes - 1;
+                 this.setState({minutes: minutes});
+              }
+           }
+    }
+    else{
+       const seconds = new_sec - 1;
+       this.setState({seconds: seconds});
+    }
+  }
+
+
+  resetter(){
+      window.location.href = "http://localhost:3000/";
+  }
+
+  starter(){
+
+    const the_timer = setInterval(()=> this.secondsUpdater(the_timer), 1000);
+    document.getElementById('id2').disabled = true;
+    document.getElementById('id3').disabled = true;
+  }
+
+  setTimerTo(){
+
+      this.setState({hours: this.props.newhours, minutes: this.props.newminutes, seconds: this.props.newseconds});
   }
 
   render(){
     return(
     <div>
-    <div >{this.props.newhours} hours</div>
-    <div >{this.props.newminutes} minutes</div>
-    <div >{this.props.newseconds} seconds</div>
-    <button> Set Timer</button>
-    <button > Start </button>
-    <button> Reset </button>
+    <div>{this.state.hours} hours</div>
+    <div>{this.state.minutes} minutes</div>
+    <div>{this.state.seconds} seconds</div>
+    <button onClick = {() => this.setTimerTo()} id = "id2" > Set Timer</button>
+    {' '}<button onClick = {() => this.starter()} id = "id3"> Start </button>
+    {' '}<button onClick = {() => this.resetter()}> Reset </button>
 
     </div>
 
